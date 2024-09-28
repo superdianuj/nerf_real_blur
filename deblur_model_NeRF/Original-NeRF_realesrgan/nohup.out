@@ -1,0 +1,946 @@
+/home/kan/anaconda3/envs/torcher/lib/python3.8/site-packages/torch/__init__.py:955: UserWarning: torch.set_default_tensor_type() is deprecated as of PyTorch 2.1, please use torch.set_default_dtype() and torch.set_default_device() as alternatives. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:432.)
+  _C._set_default_tensor_type(t)
+/home/kan/anaconda3/envs/torcher/lib/python3.8/site-packages/torch/functional.py:513: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3609.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Minifying 1 scene
+mogrify -resize 100.0% -format png *.jpg
+Removed duplicates
+Done
+Loaded image data (1600, 2400, 3, 45) [1600.         2400.         1671.01641226]
+Loaded scene 8.826515459750041 272.6734397897664
+recentered (3, 5)
+[[ 1.0000000e+00 -6.8973233e-10 -2.3508361e-08  1.1920929e-08]
+ [ 6.8973227e-10  1.0000000e+00 -3.3345193e-09 -8.6095602e-09]
+ [ 2.3508360e-08  3.3345193e-09  1.0000000e+00  6.6227385e-10]]
+Data:
+(45, 3, 5) (45, 1600, 2400, 3) (45, 2)
+HOLDOUT view is 41
+Loaded llff (45, 1600, 2400, 3) (120, 3, 5) [1600.     2400.     1671.0164] scene
+LLFF holdout, 2
+DEFINING BOUNDS
+NEAR FAR 0.0 1.0
+Found ckpts []
+train on image sequence of len = 45, 2400x1600
+get rays
+shuffle rays
+done
+Begin
+TRAIN views are [ 1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43]
+TEST views are [ 0  2  4  6  8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44]
+VAL views are [ 0  2  4  6  8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44]
+0 0.00011134147644042969
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 261.7096300125122
+2 259.8260931968689
+3 236.37910509109497
+4 242.5899178981781
+5 246.20547080039978
+6 249.93900179862976
+7 236.07011032104492
+8 241.0484209060669
+9 240.79717707633972
+10 243.20348644256592
+11 242.0538671016693
+12 233.72472834587097
+13 233.6262035369873
+14 250.3505561351776
+15 239.3892698287964
+16 237.75418853759766
+17 238.8355028629303
+18 239.36576414108276
+19 239.5384693145752
+20 239.1402862071991
+21 240.42125177383423
+22 238.23908972740173
+23 235.7825665473938
+24 236.94465970993042
+25 237.32833790779114
+26 236.8921844959259
+Traceback (most recent call last):
+  File "run_nerf.py", line 757, in <module>
+    train()
+  File "run_nerf.py", line 616, in train
+    rgbs, disps = nerf(H, W, K, args.chunk, poses=render_poses, render_kwargs=render_kwargs_test)
+  File "/home/kan/anaconda3/envs/torcher/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kan/anaconda3/envs/torcher/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/kan/anaconda3/envs/torcher/lib/python3.8/site-packages/torch/nn/parallel/data_parallel.py", line 184, in forward
+    return self.module(*inputs[0], **module_kwargs[0])
+  File "/home/kan/anaconda3/envs/torcher/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/kan/anaconda3/envs/torcher/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/NeRF.py", line 474, in forward
+    rgbs, depths = self.render_path(H, W, K, chunk, poses, **kwargs)
+  File "/home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/NeRF.py", line 565, in render_path
+    rgb, depth, acc, extras = self.render(H, W, K, chunk=chunk, rays=rays, c2w=c2w[:3, :4], **render_kwargs)
+  File "/home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/NeRF.py", line 531, in render
+    ret = self.render_rays(rays[i:i + chunk], **kwargs)
+  File "/home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/NeRF.py", line 394, in render_rays
+    raw = self.mlpforward(pts, viewdirs, mlp)
+  File "/home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/NeRF.py", line 248, in mlpforward
+    embedded = torch.cat([embedded, embedded_dirs], -1)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.41 GiB. GPU 0 has a total capacity of 39.39 GiB of which 745.25 MiB is free. Process 1024158 has 20.04 GiB memory in use. Including non-PyTorch memory, this process has 18.59 GiB memory in use. Of the allocated memory 12.86 GiB is allocated by PyTorch, and 5.24 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+OpenCV: FFMPEG: tag 0x44495658/'XVID' is not supported with codec id 12 and format 'mp4 / MP4 (MPEG-4 Part 14)'
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/'mp4v'
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+```============================================='''
+  SSIM :    0.6586051
+  PSNR :   30.6798971
+  LPIPS:    0.3097534
+```============================================='''
+
+
+OpenCV: FFMPEG: tag 0x44495658/'XVID' is not supported with codec id 12 and format 'mp4 / MP4 (MPEG-4 Part 14)'
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/'mp4v'
+Loaded image data (1600, 2400, 3, 45) [1600.         2400.         1671.01641226]
+Loaded scene 8.826515459750041 272.6734397897664
+recentered (3, 5)
+[[ 1.0000000e+00 -6.8973233e-10 -2.3508361e-08  1.1920929e-08]
+ [ 6.8973227e-10  1.0000000e+00 -3.3345193e-09 -8.6095602e-09]
+ [ 2.3508360e-08  3.3345193e-09  1.0000000e+00  6.6227385e-10]]
+Data:
+(45, 3, 5) (45, 1600, 2400, 3) (45, 2)
+HOLDOUT view is 41
+Loaded llff (45, 1600, 2400, 3) (120, 3, 5) [1600.     2400.     1671.0164] scene
+LLFF holdout, 2
+DEFINING BOUNDS
+NEAR FAR 0.0 1.0
+Found ckpts []
+train on image sequence of len = 45, 2400x1600
+get rays
+shuffle rays
+done
+Begin
+TRAIN views are [ 1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43]
+TEST views are [ 0  2  4  6  8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44]
+VAL views are [ 0  2  4  6  8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44]
+0 0.00010538101196289062
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 87.38702845573425
+2 87.3917031288147
+3 87.38056349754333
+4 87.41014456748962
+5 87.42646718025208
+6 87.42346858978271
+7 87.41387033462524
+8 87.39974403381348
+9 87.37118315696716
+10 87.38584160804749
+11 87.39438462257385
+12 87.39986634254456
+13 87.36576342582703
+14 87.36578440666199
+15 87.37142181396484
+16 87.35693693161011
+17 87.32301211357117
+18 87.3427665233612
+19 87.424889087677
+20 87.44891834259033
+21 87.39075517654419
+22 87.34381890296936
+23 87.35852432250977
+24 87.39320230484009
+25 87.48003125190735
+26 87.50142049789429
+27 87.36073040962219
+28 87.30161213874817
+29 87.37004232406616
+30 87.39291286468506
+31 87.47838163375854
+32 87.44801378250122
+33 87.37627649307251
+34 87.3705825805664
+35 87.37292504310608
+36 87.41423201560974
+37 87.48223733901978
+38 87.48618984222412
+39 87.37636637687683
+40 87.34124231338501
+41 87.34411096572876
+42 87.43133401870728
+43 87.46051406860352
+44 87.4367606639862
+45 87.40094637870789
+46 87.26763987541199
+47 87.28732824325562
+48 87.27713823318481
+49 87.19962430000305
+50 87.25322389602661
+51 87.3070478439331
+52 87.50151634216309
+53 87.38179421424866
+54 87.36833500862122
+55 87.39232134819031
+56 87.2602117061615
+57 87.51567649841309
+58 87.54888343811035
+59 87.39787578582764
+60 87.35099720954895
+61 87.35031652450562
+62 87.3936858177185
+63 87.49190068244934
+64 87.49329257011414
+65 87.43215990066528
+66 87.3720908164978
+67 87.36491513252258
+68 87.41497278213501
+69 87.42340898513794
+70 87.478764295578
+71 87.45632791519165
+72 87.23301553726196
+73 87.30919551849365
+74 87.34758758544922
+75 87.42140984535217
+76 87.42792654037476
+77 87.34959506988525
+78 87.17917132377625
+79 87.14464211463928
+80 87.16623854637146
+81 87.08176040649414
+82 87.1297664642334
+83 87.20771813392639
+84 87.25039482116699
+85 87.32005667686462
+86 87.36519289016724
+87 87.23384094238281
+88 87.21272897720337
+89 87.26218938827515
+90 87.28360533714294
+91 87.2471194267273
+92 87.26967453956604
+93 87.28294396400452
+94 87.34480237960815
+95 87.47699475288391
+96 87.35970425605774
+97 87.23626756668091
+98 87.18077158927917
+99 87.23426604270935
+100 87.18630981445312
+101 87.17093133926392
+102 87.23002862930298
+103 87.17490291595459
+104 87.20339822769165
+105 87.24233722686768
+106 87.1794946193695
+107 87.28769516944885
+108 87.32855367660522
+109 87.24446320533752
+110 87.27135634422302
+111 87.26233243942261
+112 87.24642205238342
+113 87.23862743377686
+114 87.18977117538452
+115 87.26631832122803
+116 87.22355890274048
+117 87.16016125679016
+118 87.1699755191803
+119 87.06948590278625
+Done, saving torch.Size([120, 1600, 2400, 3]) torch.Size([120, 1600, 2400])
+(120, 1600, 2400, 3)
+float32
+1.0
+0.0
+(120, 1600, 2400)
+float32
+1.0
+0.54524434
++++++++++++++++++++
+----FUCK-----
+test poses shape torch.Size([45, 3, 4])
+Append 0 # of poses to fill all the GPUs
+0 7.987022399902344e-05
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 87.01287460327148
+2 87.08462905883789
+3 87.14980959892273
+4 87.11825752258301
+5 87.17302584648132
+6 87.18165731430054
+7 87.167307138443
+8 87.18544578552246
+9 87.15448498725891
+10 87.12392354011536
+11 87.16212224960327
+12 87.1418068408966
+13 87.1898877620697
+14 87.15129613876343
+15 87.13110065460205
+16 87.0958182811737
+17 87.09641027450562
+18 87.08603191375732
+19 87.09652018547058
+20 87.11987614631653
+21 87.13462352752686
+22 87.12192487716675
+23 87.10593819618225
+24 87.13174653053284
+25 87.33080863952637
+26 87.30617475509644
+27 87.12952542304993
+28 87.09876918792725
+29 87.12018394470215
+30 87.11564612388611
+31 87.08564496040344
+32 87.10106539726257
+33 87.08892011642456
+34 87.13227081298828
+35 87.12933707237244
+36 87.08065438270569
+37 87.09412884712219
+38 87.1184606552124
+39 87.12603378295898
+40 87.07790613174438
+41 87.08044981956482
+42 87.05810284614563
+43 87.10214829444885
+44 87.10689973831177
+Saved checkpoints at results/scene/020000.tar
+0 0.00010132789611816406
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 87.02229571342468
+2 87.00629425048828
+3 87.0246090888977
+4 87.04345893859863
+5 87.03544449806213
+6 87.04845023155212
+7 87.09265637397766
+8 87.10034346580505
+9 87.12718963623047
+10 87.1001443862915
+11 87.08879661560059
+12 87.11299347877502
+13 87.09503293037415
+14 87.0983247756958
+15 87.05624461174011
+16 87.05855989456177
+17 87.06429958343506
+18 87.12379860877991
+19 87.3396782875061
+20 87.19866561889648
+21 87.04881620407104
+22 87.01996564865112
+23 87.0474317073822
+24 87.0163414478302
+25 87.03362202644348
+26 87.03301405906677
+27 87.02741980552673
+28 87.03166961669922
+29 87.03369688987732
+30 87.02218794822693
+31 87.02234745025635
+32 87.0220856666565
+33 87.03920030593872
+34 87.02193570137024
+35 87.02843594551086
+36 87.04033851623535
+37 87.05206990242004
+38 87.04924941062927
+39 87.05791926383972
+40 87.05807161331177
+41 87.06364130973816
+42 87.06107902526855
+43 87.04900121688843
+44 87.06323099136353
+45 86.99526476860046
+46 87.04421424865723
+47 87.00688624382019
+48 87.03607225418091
+49 87.02287721633911
+50 87.03377485275269
+51 87.0256519317627
+52 87.03321123123169
+53 87.02982878684998
+54 87.00055766105652
+55 87.01831126213074
+56 87.0102117061615
+57 87.06739044189453
+58 87.00578904151917
+59 86.97594690322876
+60 87.01094579696655
+61 86.96316313743591
+62 86.99794101715088
+63 86.97514319419861
+64 87.01718163490295
+65 86.97433042526245
+66 86.98880791664124
+67 86.97021722793579
+68 86.97604155540466
+69 87.12034344673157
+70 87.21021676063538
+71 87.01945400238037
+72 86.9406304359436
+73 86.97672772407532
+74 87.019033908844
+75 86.9828987121582
+76 86.95853614807129
+77 86.94071364402771
+78 86.93629360198975
+79 86.96398687362671
+80 86.96654105186462
+81 87.05499339103699
+82 87.06918144226074
+83 87.05435585975647
+84 87.07946681976318
+85 87.03907537460327
+86 87.06105470657349
+87 87.01999759674072
+88 87.01927089691162
+89 87.08231854438782
+90 87.0364580154419
+91 87.04797673225403
+92 86.99832773208618
+93 87.04108929634094
+94 87.03788375854492
+95 87.08344459533691
+96 87.05589365959167
+97 87.06170558929443
+98 87.08362174034119
+99 87.10537719726562
+100 87.06827640533447
+101 87.15923476219177
+102 87.10805821418762
+103 87.14516878128052
+104 87.1065194606781
+105 87.13288688659668
+106 87.1069176197052
+107 87.12443494796753
+108 87.14524435997009
+109 87.1502628326416
+110 87.15669631958008
+111 87.15305209159851
+112 87.08069229125977
+113 87.10686492919922
+114 87.15726280212402
+115 87.13326358795166
+116 87.1008129119873
+117 87.08935236930847
+118 87.12280011177063
+119 87.13611006736755
+Done, saving torch.Size([120, 1600, 2400, 3]) torch.Size([120, 1600, 2400])
+(120, 1600, 2400, 3)
+float32
+1.0
+0.0
+(120, 1600, 2400)
+float32
+1.0
+0.5327786
++++++++++++++++++++
+----FUCK-----
+test poses shape torch.Size([45, 3, 4])
+Append 0 # of poses to fill all the GPUs
+0 0.00010418891906738281
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 87.12045097351074
+2 87.12059330940247
+3 87.04922318458557
+4 87.05460929870605
+5 87.09700560569763
+6 87.09258008003235
+7 87.11651706695557
+8 87.09575915336609
+9 87.11160683631897
+10 87.0762550830841
+11 87.0954840183258
+12 87.129554271698
+13 87.12095332145691
+14 87.15605616569519
+15 87.13096308708191
+16 87.13352370262146
+17 87.0818293094635
+18 87.02762222290039
+19 87.04845857620239
+20 87.03254961967468
+21 87.04771304130554
+22 87.01306653022766
+23 87.02030754089355
+24 87.01593565940857
+25 86.99923324584961
+26 Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+```============================================='''
+  SSIM :    0.6812927
+  PSNR :   31.0434777
+  LPIPS:    0.2626694
+```============================================='''
+
+
+OpenCV: FFMPEG: tag 0x44495658/'XVID' is not supported with codec id 12 and format 'mp4 / MP4 (MPEG-4 Part 14)'
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/'mp4v'
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+```============================================='''
+  SSIM :    0.6942375
+  PSNR :   31.2187513
+  LPIPS:    0.2347502
+```============================================='''
+
+
+OpenCV: FFMPEG: tag 0x44495658/'XVID' is not supported with codec id 12 and format 'mp4 / MP4 (MPEG-4 Part 14)'
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/'mp4v'
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+```============================================='''
+  SSIM :    0.7044473
+  PSNR :   31.2896260
+  LPIPS:    0.2210423
+```============================================='''
+
+
+87.03263306617737
+27 87.07005548477173
+28 87.10408544540405
+29 87.1081874370575
+30 87.09437918663025
+31 87.10798048973083
+32 87.11891150474548
+33 87.12382912635803
+34 87.15811824798584
+35 87.17164349555969
+36 87.10784125328064
+37 87.11112189292908
+38 87.11307048797607
+39 87.08090114593506
+40 86.99531316757202
+41 87.01802015304565
+42 86.96749830245972
+43 87.01807689666748
+44 87.02091073989868
+0 0.00010323524475097656
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 86.95097184181213
+2 87.01072430610657
+3 87.00123691558838
+4 86.99390625953674
+5 87.011390209198
+6 87.0043625831604
+7 87.00395798683167
+8 87.01704359054565
+9 86.98261976242065
+10 86.9777660369873
+11 86.97168684005737
+12 86.96535801887512
+13 86.98663330078125
+14 86.96715307235718
+15 86.97515964508057
+16 86.98043060302734
+17 86.96763443946838
+18 86.97201609611511
+19 87.006343126297
+20 86.99247860908508
+21 86.99836301803589
+22 87.01480722427368
+23 86.99830079078674
+24 86.99928593635559
+25 86.9825758934021
+26 87.00428414344788
+27 86.97700619697571
+28 86.97629308700562
+29 86.96034359931946
+30 86.94742321968079
+31 86.946368932724
+32 86.95148730278015
+33 86.98175597190857
+34 86.98104548454285
+35 86.96271395683289
+36 86.95182728767395
+37 86.93172979354858
+38 86.92853736877441
+39 86.92367458343506
+40 86.92523384094238
+41 86.91823267936707
+42 86.89502501487732
+43 86.95628595352173
+44 87.10582280158997
+45 87.23914194107056
+46 87.04245042800903
+47 86.92293381690979
+48 86.91192269325256
+49 86.88904857635498
+50 86.92798638343811
+51 86.95207524299622
+52 86.96519374847412
+53 86.96471858024597
+54 86.93796181678772
+55 86.976318359375
+56 86.97540521621704
+57 86.96858644485474
+58 86.97631311416626
+59 86.9498176574707
+60 86.94434976577759
+61 86.91699385643005
+62 86.92513990402222
+63 86.91520023345947
+64 86.92555284500122
+65 86.95348167419434
+66 86.92316961288452
+67 86.96322774887085
+68 86.93004894256592
+69 86.96738696098328
+70 86.94789123535156
+71 86.92396402359009
+72 86.91880249977112
+73 86.9579348564148
+74 86.88587498664856
+75 86.87232446670532
+76 86.9311294555664
+77 86.94079661369324
+78 86.96581387519836
+79 86.93204402923584
+80 86.94752407073975
+81 86.91026878356934
+82 86.9412751197815
+83 86.89921402931213
+84 86.9724473953247
+85 86.90308356285095
+86 86.93463778495789
+87 86.9483003616333
+88 86.92228984832764
+89 86.93245911598206
+90 86.9337067604065
+91 86.95091152191162
+92 86.93935704231262
+93 86.88956236839294
+94 86.99476385116577
+95 87.21892762184143
+96 87.10033106803894
+97 86.91361331939697
+98 86.94629216194153
+99 86.95334792137146
+100 86.95887565612793
+101 86.96328067779541
+102 86.9638922214508
+103 87.00388145446777
+104 86.95525312423706
+105 86.97138452529907
+106 86.93588018417358
+107 86.95931077003479
+108 86.99143576622009
+109 86.976398229599
+110 86.9280297756195
+111 86.95467185974121
+112 87.00475764274597
+113 86.97634315490723
+114 86.94761967658997
+115 87.00317740440369
+116 86.94325137138367
+117 86.99735474586487
+118 86.95452404022217
+119 86.98755192756653
+Done, saving torch.Size([120, 1600, 2400, 3]) torch.Size([120, 1600, 2400])
+(120, 1600, 2400, 3)
+float32
+1.0
+0.0
+(120, 1600, 2400)
+float32
+1.0
+0.52769274
++++++++++++++++++++
+----FUCK-----
+test poses shape torch.Size([45, 3, 4])
+Append 0 # of poses to fill all the GPUs
+0 7.128715515136719e-05
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 86.85817289352417
+2 87.02813792228699
+3 86.99940776824951
+4 86.99452471733093
+5 87.03883385658264
+6 87.02325344085693
+7 87.01820015907288
+8 87.03975915908813
+9 86.98701095581055
+10 86.9512095451355
+11 86.97090196609497
+12 86.98596286773682
+13 87.03392744064331
+14 87.01462745666504
+15 87.03621482849121
+16 87.02965712547302
+17 87.03414392471313
+18 87.00916814804077
+19 87.037269115448
+20 87.05088686943054
+21 87.06271314620972
+22 87.06410145759583
+23 87.04534792900085
+24 87.04360675811768
+25 87.19575476646423
+26 87.18149161338806
+27 87.01580309867859
+28 87.02478671073914
+29 87.00270891189575
+30 87.01144480705261
+31 86.99382019042969
+32 87.00227642059326
+33 86.99064040184021
+34 87.04378128051758
+35 87.02272725105286
+36 86.99660992622375
+37 86.9549171924591
+38 86.97815537452698
+39 86.97796130180359
+40 86.93160796165466
+41 86.94556593894958
+42 86.90845084190369
+43 87.0041081905365
+44 86.97407865524292
+Saved checkpoints at results/scene/040000.tar
+0 7.653236389160156e-05
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 86.89454007148743
+2 86.96479201316833
+3 86.94535946846008
+4 86.94549798965454
+5 86.99933123588562
+6 86.96277856826782
+7 87.00885319709778
+8 87.03700923919678
+9 86.99293756484985
+10 86.99950385093689
+11 87.01054668426514
+12 87.0211341381073
+13 86.99695301055908
+14 87.0023717880249
+15 86.9671618938446
+16 86.99902415275574
+17 87.00205755233765
+18 86.99359369277954
+19 87.20863795280457
+20 87.1493923664093
+21 86.95683646202087
+22 86.92424488067627
+23 86.94264721870422
+24 86.94361758232117
+25 86.95384931564331
+26 86.9657986164093
+27 86.94001841545105
+28 86.95884919166565
+29 86.95628905296326
+30 86.95361995697021
+31 86.94844388961792
+32 86.94706106185913
+33 86.95152163505554
+34 86.95057463645935
+35 86.96024513244629
+36 86.96815514564514
+37 86.93724060058594
+38 86.95169281959534
+39 86.95265126228333
+40 86.94293403625488
+41 86.95499062538147
+42 86.94083428382874
+43 86.94016098976135
+44 86.95723104476929
+45 86.92325448989868
+46 86.92839241027832
+47 86.93996930122375
+48 86.93820881843567
+49 86.97864151000977
+50 86.98493576049805
+51 86.98565363883972
+52 86.98413467407227
+53 86.99608635902405
+54 87.00410532951355
+55 86.99813079833984
+56 86.9969379901886
+57 86.98471474647522
+58 86.98331189155579
+59 86.9862949848175
+60 86.9898636341095
+61 86.93938541412354
+62 86.95114779472351
+63 86.97992181777954
+64 86.96818256378174
+65 86.97964835166931
+66 87.01947236061096
+67 86.9603898525238
+68 86.96999645233154
+69 87.06698894500732
+70 87.29078269004822
+71 87.050283908844
+72 86.90631079673767
+73 86.91542959213257
+74 86.95016098022461
+75 86.9340410232544
+76 86.9180793762207
+77 86.93583059310913
+78 86.95416116714478
+79 86.97169160842896
+80 86.94220614433289
+81 86.97176051139832
+82 86.93613147735596
+83 86.90011024475098
+84 86.94651341438293
+85 86.92644000053406
+86 86.95139527320862
+87 86.92842102050781
+88 86.92220115661621
+89 86.95758295059204
+90 86.94660639762878
+91 86.92758107185364
+92 86.96388983726501
+93 86.96480369567871
+94 86.9007511138916
+95 86.92702794075012
+96 86.96706032752991
+97 86.96049284934998
+98 86.97417545318604
+99 86.96406722068787
+100 86.96672987937927
+101 86.90841436386108
+102 86.9809672832489
+103 86.95604419708252
+104 86.94177675247192
+105 86.949303150177
+106 86.94080567359924
+107 86.96097946166992
+108 86.94869875907898
+109 86.95554327964783
+110 86.98297262191772
+111 86.96567726135254
+112 86.99043893814087
+113 86.93168950080872
+114 86.99583148956299
+115 87.00614929199219
+116 86.9823567867279
+117 86.9697654247284
+118 86.95632815361023
+119 86.93919157981873
+Done, saving torch.Size([120, 1600, 2400, 3]) torch.Size([120, 1600, 2400])
+(120, 1600, 2400, 3)
+float32
+1.0
+0.0
+(120, 1600, 2400)
+float32
+1.0
+0.46405137
++++++++++++++++++++
+----FUCK-----
+test poses shape torch.Size([45, 3, 4])
+Append 0 # of poses to fill all the GPUs
+0 9.322166442871094e-05
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 87.0274863243103
+2 87.00894141197205
+3 86.9228720664978
+4 86.91085410118103
+5 86.95943903923035
+6 86.94736123085022
+7 86.9329845905304
+8 86.96792340278625
+9 86.92058491706848
+10 86.90388035774231
+11 86.92973804473877
+12 86.9535071849823
+13 86.9538369178772
+14 86.96154952049255
+15 86.98292946815491
+16 86.97618889808655
+17 86.95671486854553
+18 86.91961598396301
+19 86.94645476341248
+20 86.9868631362915
+21 86.99494743347168
+22 86.98658895492554
+23 86.98672103881836
+24 87.00079870223999
+25 86.93599081039429
+26 86.96517586708069
+27 86.97801351547241
+28 87.00160956382751
+29 86.97913956642151
+30 86.99378609657288
+31 86.96718049049377
+32 87.00239610671997
+33 86.98773646354675
+34 87.0206606388092
+35 87.02116584777832
+36 86.97908759117126
+37 86.98075342178345
+38 87.00807309150696
+39 87.02021980285645
+40 86.96722650527954
+41 86.99931406974792
+42 86.93763494491577
+43 86.97672462463379
+44 86.97348976135254
+0 7.176399230957031e-05
+torch.Size([1600, 2400, 3]) torch.Size([1600, 2400])
+1 86.79713559150696
+2 OpenCV: FFMPEG: tag 0x44495658/'XVID' is not supported with codec id 12 and format 'mp4 / MP4 (MPEG-4 Part 14)'
+OpenCV: FFMPEG: fallback to use tag 0x7634706d/'mp4v'
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [off]
+Loading model from: /home/kan/codework/gay_nerf_exps/NAFNet_Real-ESRGAN_nerf_blurbasket/Original-NeRF_realesrgan/lpips/weights/v0.1/vgg.pth
+```============================================='''
+  SSIM :    0.7078178
+  PSNR :   31.3591092
+  LPIPS:    0.2121049
+```============================================='''
+
+

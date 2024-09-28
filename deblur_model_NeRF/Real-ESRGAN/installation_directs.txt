@@ -1,0 +1,14 @@
+conda create -n torcher python=3.8 -y && conda activate torcher
+ # install torch
+
+pip install basicsr
+
+python setup.py develop
+
+
+# open "vim /home/<username>/anaconda3/envs/<environment name>/lib/python3.8/site-packages/basicsr/data/degradations.py" and change
+
+# and then replace these code
+# from torchvision.transforms.functional_tensor import rgb_to_grayscale
+# to
+# from torchvision.transforms._functional_tensor import rgb_to_grayscale
